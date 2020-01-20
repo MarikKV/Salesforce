@@ -19,12 +19,10 @@
         public void sendEmailOnNewOrder() {
             List<order__c> oppList = new List<order__c>([SELECT name FROM order__c]);
 
-
-            //змінити на вибір
-            List<costumer__c> alluser = new List<costumer__c>([SELECT name FROM costumer__c]);
+            List<User> admin = new List<User>([SELECT email FROM User WHERE Profile.Name = 'Shop Admin']);
             // System.debug('Number of list is ' + oppList.size() + 'All users - ' + alluser.size());
-            for (costumer__c i : alluser){
-            sendMail('kosaniakm@gmail.com', 'Order acreated', 'New order has been created for user '+i.name)
+            for (User i : admin){
+                sendMail(i.email, 'Order' + oppList.Size() + ' acreated', 'New order' + oppList.Size() + 'has been created for user ')
             }
         }
         

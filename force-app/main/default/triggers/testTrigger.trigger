@@ -1,12 +1,7 @@
-trigger testTrigger on order__c (before insert, after insert, after delete) {
-    if (Trigger.isInsert) {
-        if (Trigger.isBefore) {
-            // Process before insert
-        } else if (Trigger.isAfter) {
-           TestTriggerHandler.sendEmailOnNewOrder();
+trigger testTrigger on order__c ( after insert ) {
+    if (Trigger.isAfter) {
+        if (Trigger.isInsert) {
+           new TestTriggerHandler.sendEmailOnNewOrder();
         }        
-    }
-    else if (Trigger.isDelete) {
-        TestTriggerHandler.sendMail('kosaniakm@gmail.com', 'Trailhead Tutorial', 'New order been deleted');
     }
 }
