@@ -4,7 +4,7 @@
     margin: 5px;
     border-bottom: 2px solid black;
     padding: 2px;
-    width: 150px;
+    width: 90%;
 }
 .category.THIS:hover{
     color: red;

@@ -1,2 +1,6 @@
-.THIS {
+.cart_block.THIS {
+    width: 90%;
+    background-color: rgb(85, 85, 48);
+    margin: 0 auto;
+    margin-top: 20px;
 }

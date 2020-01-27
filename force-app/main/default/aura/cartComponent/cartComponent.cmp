@@ -1,9 +1,21 @@
 <aura:component  implements="forceCommunity:availableForAllPageTypes" access="global" >
     <aura:attribute name="orderedProducts" type="product__c[]"/>
 	
-	<h1>Cart products:</h1>
-	
-	<aura:iteration items="{!v.orderedProducts}" var="product">
-		<c:cartItemComponent item="{!product}"/>
-	</aura:iteration>
+	<h1 align="center">Cart products:</h1>
+
+	<lightning:accordion aura:id="accordion" activeSectionName="A">
+        <lightning:accordionSection name="A" label="Accordion Title A">
+            <aura:set attribute="body">
+                <lightning:input type="email" name="email1" value="abc@domain.com" label="Email field with predefined value" />
+                <lightning:input type="password" label="Enter your password" name="input1" />
+                <lightning:button variant="Neutral" label="Buy" onclick="{! c.handleClick }" />
+            </aura:set>
+        </lightning:accordionSection>
+    </lightning:accordion>
+
+	<div class="cart_block">
+		<aura:iteration items="{!v.orderedProducts}" var="product">
+			<c:cartItemComponent item="{!product}"/>
+		</aura:iteration>
+	</div>
 </aura:component>

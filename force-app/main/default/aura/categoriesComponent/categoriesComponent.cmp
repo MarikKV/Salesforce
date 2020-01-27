@@ -1,9 +1,9 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
     <aura:attribute name="categ" type="category__c[]"/>
     
-    <h1>All categories</h1>
+    <h1 align="center">All categories</h1>
     <aura:iteration items="{!v.categ}" var="category">
-    	<div class="menu">
+        <div class="menu">
             <c:categoryComponent items="{!category}"/>
         </div>
     </aura:iteration>

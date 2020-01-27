@@ -1,5 +1,6 @@
 <aura:component>	
     <aura:attribute name="item" type="product__c"/>
+    <!--cat це Id категорії, а catName назва-->
     <aura:attribute name="cat" type="String"/>
     <aura:attribute name="catName" type="String"/>
 

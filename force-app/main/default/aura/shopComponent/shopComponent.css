@@ -1,2 +1,16 @@
-.THIS {
+.w-20.THIS {
+    width: 20%;
+    background-color: rgb(197, 183, 183);
 }
+.w-50.THIS {
+    width: 50%;
+    background-color: rgb(198, 219, 228);
+}
+.w-30.THIS {
+    width: 30%;
+    background-color: rgb(198, 218, 152);
+}
+.f_l.THIS{
+    float: left;
+}
+

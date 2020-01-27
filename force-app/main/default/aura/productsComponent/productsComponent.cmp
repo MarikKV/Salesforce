@@ -2,25 +2,9 @@
     <aura:attribute name="productItems" type="product__c[]"/>
     <aura:attribute name="cat" type="String"/>
     <aura:attribute name="catName" type="String"/>
- 
+
+    <h1 align="center">Products in category: {!v.catName}</h1>
 	<aura:iteration items="{!v.productItems}" var="category">
-    	<div>
-            <c:productComponent item="{!category}" cat="{!v.cat}" catName='{!v.catName}'/>
-        </div>
+        <c:productComponent item="{!category}" cat="{!v.cat}" catName='{!v.catName}'/>
     </aura:iteration>
-    
-    
-    
-    
-    
-    
-    <!--Створити окремою компонентою-->
-    <br />    
-    <h1>For cart</h1>
-    <aura:iteration items="{!v.productsForCart}" var="productFromCart">
-    	<div>
-            <c:productFromCartComponent item="{!productFromCart}"/>
-        </div>
-    </aura:iteration>
-    <!--Створити окремою компонентою-->
 </aura:component>
