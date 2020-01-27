@@ -1,7 +1,3 @@
-trigger testTrigger on order__c ( after insert ) {
-    if (Trigger.isAfter) {
-        if (Trigger.isInsert) {
-           new TestTriggerHandler.sendEmailOnNewOrder();
-        }        
-    }
+trigger testTrigger on order__c (after insert, after update) {
+    HandlerExecutionPool.getInstance().getHandler(order__c.class).execute();
 }

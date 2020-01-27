@@ -1,0 +1,12 @@
+.category.THIS {
+    color: blue;
+    font-size: 20px;
+    margin: 5px;
+    border-bottom: 2px solid black;
+    padding: 2px;
+    width: 150px;
+}
+.category.THIS:hover{
+    color: red;
+    border-bottom: 2px solid red;
+}

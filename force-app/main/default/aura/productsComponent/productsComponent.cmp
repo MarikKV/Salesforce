@@ -1,0 +1,25 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="productItems" type="product__c[]"/>
+    <aura:attribute name="cat" type="String"/>
+ 
+	<aura:iteration items="{!v.productItems}" var="category">
+    	<div>
+            <c:productComponent item="{!category}" cat="{!v.cat}"/>
+        </div>
+    </aura:iteration>
+    
+    
+    
+    
+    
+    
+    <!--Створити окремою компонентою-->
+    <br />    
+    <h1>For cart</h1>
+    <aura:iteration items="{!v.productsForCart}" var="productFromCart">
+    	<div>
+            <c:productFromCartComponent item="{!productFromCart}"/>
+        </div>
+    </aura:iteration>
+    <!--Створити окремою компонентою-->
+</aura:component>

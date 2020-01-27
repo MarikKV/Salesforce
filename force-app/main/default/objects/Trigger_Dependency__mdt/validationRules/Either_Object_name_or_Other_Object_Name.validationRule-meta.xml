@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Either_Object_name_or_Other_Object_Name</fullName>
+    <active>true</active>
+    <description>Only one of the object names must be populated</description>
+    <errorConditionFormula>AND(ISBLANK(Object_Name__c), ISBLANK(Other_Object_API_Name__c))
+            || AND(!ISBLANK(Object_Name__c) &amp;&amp; !ISBLANK(Other_Object_API_Name__c))</errorConditionFormula>
+    <errorMessage>One of the Object names must be populated</errorMessage>
+</ValidationRule>

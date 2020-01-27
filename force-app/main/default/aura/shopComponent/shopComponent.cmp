@@ -1,0 +1,22 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CategoriesListController" access="global">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="items" type="category__c[]"/>
+    <aura:attribute name="productItems" type="product__c[]"/>
+    <aura:attribute name="cat" type="String"/>
+    
+	<aura:handler event="c:chuseCategoryEvent" action="{!c.handleApplicationEvent}"/>
+    
+    <!--<aura:attribute name="productCategory" type="category__c[]"/>-->
+	<!--<aura:attribute name="productsForCart"  type="String[]" default="['prod1', 'prod2', 'prod3']"/>-->
+    
+    
+    
+    <c:categoriesComponent categ='{!v.items}'/>
+    <c:productsComponent productItems='{!v.productItems}' cat='{!v.cat}'/>
+    
+    
+    
+    
+    <!--<c:cartComponent orderedProducts="{!v.productsForCart}"/>-->
+    
+</aura:component>

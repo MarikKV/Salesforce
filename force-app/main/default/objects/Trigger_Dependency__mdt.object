@@ -79,7 +79,6 @@
         <label>MoreInfo</label>
         <language>en_US</language>
     </listViews>
-    <label>Trigger_Dependency</label>
     <pluralLabel>Trigger Dependency</pluralLabel>
     <validationRules>
         <fullName>Either_Object_name_or_Other_Object_Name</fullName>
