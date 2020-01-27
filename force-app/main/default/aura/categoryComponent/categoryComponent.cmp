@@ -3,7 +3,10 @@
     
     <aura:registerEvent name="appEvent" type="c:chuseCategoryEvent"/>
 
-    <lightning:button class="category" onclick="{!c.selectCategory}" label='{!v.items.name__c}'>
+    <lightning:button class="category"
+        onclick="{!c.selectCategory}"  
+        title="{!v.items.Id}"
+        label="{!v.items.name__c}">
     	{!v.items.name__c}
     </lightning:button>
 </aura:component>

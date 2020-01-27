@@ -1,0 +1,4 @@
+<aura:component>
+    <aura:attribute name="item" type="product__c"/>
+    <p>new item: - {!v.item.price__c} - added to cart</p>
+</aura:component>	

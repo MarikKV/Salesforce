@@ -1,17 +1,23 @@
 <aura:component>	
     <aura:attribute name="item" type="product__c"/>
     <aura:attribute name="cat" type="String"/>
-   	<!-- <aura:if isTrue="{!v.item.category__c == v.cat.Id}">  -->
-    
+    <aura:attribute name="catName" type="String"/>
+
+    <aura:registerEvent name="appEvent" type="c:addProductToCartEvent"/>
+
+   	<aura:if isTrue="{!v.item.category__c == v.cat}">
         <div class="card">
-            <lightning:card footer="{!v.item.price__c + '$'}" title="{!v.cat}">
+            <lightning:card footer="{!v.item.price__c + '$'}" title="{!v.catName}">
                 <aura:set attribute="actions">
-                    <lightning:button label="Buy" name="{!v.item.name__c}" onclick="{!c.addToCart}"/>
+                    <lightning:button label="Buy" 
+                    name="{!v.item}" 
+                    onclick="{!c.addToCart}"/>
                 </aura:set>
                 <h1 class="slds-p-horizontal_small">
                     {!v.item.name__c}
                 </h1>
             </lightning:card>
         </div>	
-  <!-- </aura:if>  -->
+    </aura:if>
+
 </aura:component>

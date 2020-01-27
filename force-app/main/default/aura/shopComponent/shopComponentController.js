@@ -2,7 +2,7 @@
     doInit: function(component, event, helper) {
         var action = component.get("c.getItems");
         var action2 = component.get("c.getProductsItems");
-
+        
         // Add callback behavior for when response is received
         action.setCallback(this, function(response) {
             var state = response.getState();
@@ -25,11 +25,20 @@
         $A.enqueueAction(action);
         $A.enqueueAction(action2);
     },
-    handleApplicationEvent : function(cmp, event) {
+    handleChuseCategoryEvent : function(cmp, event) {
         var category = event.getParam("cat");
-
-        // set the handler attributes based on event data
+        var categoryName = event.getParam("catName");
+        
         cmp.set("v.cat", category);
-        console.log(category);
+        cmp.set("v.catName", categoryName);
+    },
+    handleAddProductToCartEvent : function(cmp, event) {
+        var product = event.getParam("product");
+        var productsInCart = cmp.get("v.product");
+        //console.log('all in cart', newList, 'all');
+        //console.log('before push', cartProducts, 'all');
+        productsInCart.push(product);
+        console.log('after push', productsInCart);
+        cmp.set("v.product", productsInCart);
     }
 })

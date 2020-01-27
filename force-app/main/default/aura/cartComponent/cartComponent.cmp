@@ -1,0 +1,9 @@
+<aura:component  implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="orderedProducts" type="product__c[]"/>
+	
+	<h1>Cart products:</h1>
+	
+	<aura:iteration items="{!v.orderedProducts}" var="product">
+		<c:cartItemComponent item="{!product}"/>
+	</aura:iteration>
+</aura:component>

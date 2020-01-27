@@ -1,10 +1,11 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
     <aura:attribute name="productItems" type="product__c[]"/>
     <aura:attribute name="cat" type="String"/>
+    <aura:attribute name="catName" type="String"/>
  
 	<aura:iteration items="{!v.productItems}" var="category">
     	<div>
-            <c:productComponent item="{!category}" cat="{!v.cat}"/>
+            <c:productComponent item="{!category}" cat="{!v.cat}" catName='{!v.catName}'/>
         </div>
     </aura:iteration>
     

@@ -3,20 +3,14 @@
     <aura:attribute name="items" type="category__c[]"/>
     <aura:attribute name="productItems" type="product__c[]"/>
     <aura:attribute name="cat" type="String"/>
+    <aura:attribute name="catName" type="String"/>
+    <aura:attribute name="product" type="product__c[]"/>
     
-	<aura:handler event="c:chuseCategoryEvent" action="{!c.handleApplicationEvent}"/>
-    
-    <!--<aura:attribute name="productCategory" type="category__c[]"/>-->
-	<!--<aura:attribute name="productsForCart"  type="String[]" default="['prod1', 'prod2', 'prod3']"/>-->
-    
-    
-    
+    <aura:handler event="c:chuseCategoryEvent" action="{!c.handleChuseCategoryEvent}"/>
+    <aura:handler event="c:addProductToCartEvent" action="{!c.handleAddProductToCartEvent}"/>
+        
     <c:categoriesComponent categ='{!v.items}'/>
-    <c:productsComponent productItems='{!v.productItems}' cat='{!v.cat}'/>
+    <c:productsComponent productItems='{!v.productItems}' cat='{!v.cat}' catName='{!v.catName}'/>
     
-    
-    
-    
-    <!--<c:cartComponent orderedProducts="{!v.productsForCart}"/>-->
-    
+    <c:cartComponent orderedProducts="{!v.product}"/>
 </aura:component>
