@@ -5,6 +5,8 @@
     <aura:attribute name="cat" type="String"/>
     <aura:attribute name="catName" type="String"/>
     <aura:attribute name="product" type="product__c[]"/>
+    <aura:attribute name="totalPrice" type="Integer" default="0"/>
+
     
     <aura:handler event="c:chuseCategoryEvent" action="{!c.handleChuseCategoryEvent}"/>
     <aura:handler event="c:addProductToCartEvent" action="{!c.handleAddProductToCartEvent}"/>
@@ -13,16 +15,20 @@
     <aura:handler event="c:decreaseNumberOfProduct" action="{!c.handleDecreaseNumberOfProductEvent}"/>-->
     <aura:handler event="c:delProductFromCartEvent" action="{!c.handleDelProductFromCartEvent}"/>
 
-        
+    <!--Create order Event-->
+    <aura:handler event="c:createOrderEvent" action="{!c.handleCreateOrderEvent}"/>
+
     <div class="w-20 f_l">
         <c:categoriesComponent categ='{!v.items}'/>
     </div>
 
     <div class="w-50 f_l">
-        <c:productsComponent productItems='{!v.productItems}' cat='{!v.cat}' catName='{!v.catName}'/>
+        <c:productsComponent productItems='{!v.productItems}' 
+        cat='{!v.cat}' 
+        catName='{!v.catName}'/>
     </div>
 
     <div class="w-30 f_l">
-        <c:cartComponent orderedProducts="{!v.product}"/>
+        <c:cartComponent orderedProducts="{!v.product}" totalPrice="{!v.totalPrice}"/>
     </div>
 </aura:component>

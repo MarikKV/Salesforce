@@ -32,6 +32,17 @@
         cmp.set("v.cat", category);
         cmp.set("v.catName", categoryName);
     },
+    countTotalPrice : function(cmp, event) {
+        var productsInCart = cmp.get("v.product");
+        var totalPrice = 0;
+        for(let i = 0; i < productsInCart.length; i++){
+            totalPrice += productsInCart[i].price__c;
+        }
+        //console.log('all in cart', newList, 'all');
+        //console.log('before push', cartProducts, 'all');
+        console.log('totalPrice', totalPrice);
+        cmp.set("v.totalPrice", totalPrice);
+    },
     handleAddProductToCartEvent : function(cmp, event) {
         var product = event.getParam("product");
         var productsInCart = cmp.get("v.product");
@@ -40,6 +51,9 @@
         productsInCart.push(product);
         console.log('after push', productsInCart);
         cmp.set("v.product", productsInCart);
+
+        var countTotalPrice = cmp.get('c.countTotalPrice');
+        $A.enqueueAction(countTotalPrice);
     },
     handleDelProductFromCartEvent : function(cmp, event) {
         var product = event.getParam("product");
@@ -54,11 +68,35 @@
             } 
         }
         cmp.set("v.product", productsInCart);
-        /*console.log(productsInCart[0].name__c, productsInCart[1].name__c, productsInCart[2].name__c);
-        console.log('all in cart', newList, 'all');
-        console.log('before push', cartProducts, 'all');
-        productsInCart.push(product);
-        console.log('after push', productsInCart);
-        cmp.set("v.product", productsInCart);*/
+        var countTotalPrice = cmp.get('c.countTotalPrice');
+        $A.enqueueAction(countTotalPrice);
+    },
+    handleCreateOrderEvent : function(cmp, event) {
+        var newCustomer = event.getParam("newCustumer");
+        console.log(newCustomer.Email__c, newCustomer.password__c);
+        //Adding new custumer to DB
+        var action = cmp.get("c.createNewCustomer");
+        action.setParams({
+            newCustomer: newCustomer
+        });
+        action.setCallback(this, function(response) {
+            var state = response.getState();
+            if (state === "SUCCESS") {
+            var newCustomerInfo = response.getReturnValue();
+            console.log(newCustomerInfo);
+            //when login will be added
+            //component.set("v.newCustomer", newCustomer);
+            }else{
+                console.log(JSON.stringify(response.getError()))
+                console.log('failed response adding custumer')
+            }
+        });
+        $A.enqueueAction(action);
+        
+        //Creating new order
+        var actionOrder = cmp.get("c.createNewCustomer");
+        actionOrder.setParams({
+            newCustomer: newCustomer
+        });
     }
 })

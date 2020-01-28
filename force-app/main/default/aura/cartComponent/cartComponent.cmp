@@ -1,14 +1,20 @@
 <aura:component  implements="forceCommunity:availableForAllPageTypes" access="global" >
     <aura:attribute name="orderedProducts" type="product__c[]"/>
-	
+	<aura:attribute name="newCustumer" type="costumer__c" default="{'Email__c': '', 'password__c': ''}"/>
+    <aura:attribute name="totalPrice" type="Integer"/>
+
+
+    <aura:registerEvent name="appEvent" type="c:createOrderEvent"/>
+    
 	<h1 align="center">Cart products:</h1>
 
-	<lightning:accordion aura:id="accordion" activeSectionName="A">
-        <lightning:accordionSection name="A" label="Accordion Title A">
+	<lightning:accordion aura:id="accordion" activeSectionName="B">
+        <lightning:accordionSection name="A" label="Create an order">
             <aura:set attribute="body">
-                <lightning:input type="email" name="email1" value="abc@domain.com" label="Email field with predefined value" />
-                <lightning:input type="password" label="Enter your password" name="input1" />
-                <lightning:button variant="Neutral" label="Buy" onclick="{! c.handleClick }" />
+                <lightning:input type="email" name="email" value="{!v.newCustumer.Email__c}" label="Email field with predefined value" />
+                <lightning:input type="password" label="Enter your password" value="{!v.newCustumer.password__c}" name="password" />
+                <p>Total price: {!v.totalPrice} $</p>
+                <lightning:button variant="Neutral" label="Buy" onclick="{! c.createOrder }" />
             </aura:set>
         </lightning:accordionSection>
     </lightning:accordion>

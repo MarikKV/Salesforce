@@ -1,13 +1,13 @@
 <aura:component>
     <aura:attribute name="item" type="product__c"/>
-    <lightning:card footer="{!'Total price - ' + v.item.price__c + '$'}" title="Number of products">
+    <lightning:card footer="{!'Total price - ' + v.item.price__c + '$'}" title="{!'№:'}">
         <aura:set attribute="actions">
             <lightning:button label="+" name="{!v.item.Id}" onclick="{!c.increaseNumberOfProduct}"/>
             <lightning:button label="-" name="{!v.item.Id}" onclick="{!c.decreaseNumberOfProduct}"/>
             <lightning:button variant="destructive" name="{!v.item.Id}" label="Del" onclick="{!c.delProductFromCart}"/>
         </aura:set>
         <p class="slds-p-horizontal_small">
-            {!v.item.name__c}
+            {!v.item.name__c}<br />
         </p>
     </lightning:card>
 </aura:component>	
